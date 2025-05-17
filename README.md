@@ -6,6 +6,13 @@ A 3D printable frame for a 7.5" e-ink display a website to control its content.
 
 Upload images via the website's calendar interface. Choose one image for each day.
 
+<details>
+<summary>Website Screenshot (click to expand)</summary>
+
+![Website Screenshot](./website-screenshot.png)
+
+</details>
+
 ## 📦 Hardware Requirements
 
 - 7.5" WaveShare e-ink display
@@ -28,10 +35,10 @@ TODO
 Run the docker container:
 
 ```bash
-docker run -d -p 80:1313 -v /path/to/inkday:/data ghcr.io/jflessau/inkday:latest
+docker run -d -p 80:1313 -v /path/to/inkday-data:/data ghcr.io/jflessau/inkday:latest
 ```
 
-This starts the server on port 80 and mount the `/path/to/inkday` directory to the container's `/data` directory, where the images are stored.
+This starts the server on port 80 and mount the `/path/to/inkday-data` directory to the container's `/data` directory, where the images are stored.
 Images will be resized to fit the display (`800x480 px`).
 
 ### 4. Connect Pi & Server
