@@ -38,25 +38,35 @@ def main():
         raise RuntimeError("environment variable 'server_url' not set")
     logging.info("starting with server_url: %s", server_url)
 
-    # init screen
-    logging.info("init screen")
-    epd = epd7in5_V2.EPD()
-    epd.init()
 
     try:
         while True:
+            # check if it's midnight
+            hour_of_the_day = time.localtime().tm_hour
+            if hour_of_the_day != 17:
+                logging.info(f"not midnight ({hour_of_the_day}), waiting for next hour")
+                time.sleep(3600)
+                continue
+
+            # init screen
+            logging.info("init screen")
+            epd = epd7in5_V2.EPD()
+            epd.init()
+
+            # get current image
+            image = get_img(server_url)
+
+            # clear screen
             full_clear(epd)
 
             # display image
-            image = get_img(server_url)
             epd.display(epd.getbuffer(image))
 
             # send screen to sleep
             logging.info("send screen to sleep")
             epd.sleep()
 
-            # sleep for 1 hour
-            logging.info("sleeping for 1 hour")
+            # wait for next hour
             time.sleep(3600)
 
     except IOError as e:

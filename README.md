@@ -10,6 +10,7 @@ Upload images via the website's calendar interface. Choose one image for each da
 - Raspberry Pi 3B+ with power supply and WiFi connection
 - 3D printer
 - A server for the website
+- Four screws to attach the Pi to the frame (head diameter: 5mm, thred diameter: 3mm, length: 5mm)
 
 ## 🖐️ Usage
 

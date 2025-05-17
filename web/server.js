@@ -143,7 +143,7 @@ app.post("/", upload.single("image"), async (req, res) => {
   try {
     // Convert to jpg, resize to exactly 800x480
     await sharp(req.file.buffer)
-      .resize(800, 480, { fit: "fill" })
+      .resize(800, 480, { fit: "contain" })
       .jpeg()
       .toFile(outputPath);
 
@@ -160,8 +160,7 @@ app.get("/today-image", (req, res) => {
   const imgPath = path.join(DATA_DIR, today + ".jpg");
   fs.access(imgPath, fs.constants.F_OK, (err) => {
     if (err) {
-      res.status(404).end();
-      return;
+      return res.status(404).send("No image for today found");
     }
     res.sendFile(imgPath);
   });
