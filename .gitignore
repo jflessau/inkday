@@ -1,1 +1,9 @@
-/target
+web/target
+
+.DS_Store
+/.idea
+
+.env
+
+web/data/*
+!web/data/.gitkeep
