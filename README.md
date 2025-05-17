@@ -8,7 +8,7 @@ Upload images via the website's calendar interface. Choose one image for each da
 
 - 7.5" WaveShare e-ink display
 - Raspberry Pi 3B+ with power supply and WiFi connection
-- 3D printer (you can also use an online service to print the frame)
+- 3D printer
 - A server for the website
 
 ## 🖐️ Usage
@@ -21,7 +21,7 @@ Start the server with docker and mount a directory to store the images in:
 docker run -d -p 80:1313 -v /your-inkday-data:/data ghcr.io/jflessau/inkday:latest
 ```
 
-Images will be resized to fit the frame: `800x480 px`.
+Images will be resized to fit the frame (`800x480 px`).
 
 ### 2. Connect Pi & Server
 

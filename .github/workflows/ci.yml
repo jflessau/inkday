@@ -29,9 +29,7 @@ jobs:
   build_web:
     name: "build: web"
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        platform: [linux/amd64, linux/arm64]
+    needs: check_web
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -52,7 +50,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./web/
-          platforms: ${{ matrix.platform }}
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/jflessau/inkday-web:latest
