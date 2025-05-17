@@ -32,7 +32,7 @@ docker run -d -p 80:1313 -v /path/to/inkday:/data ghcr.io/jflessau/inkday:latest
 ```
 
 This starts the server on port 80 and mount the `/path/to/inkday` directory to the container's `/data` directory, where the images are stored.
-Images will be resized to fit the display (800 x 480px).
+Images will be resized to fit the display (`800x480 px`).
 
 ### 4. Connect Pi & Server
 
