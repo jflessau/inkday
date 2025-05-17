@@ -31,6 +31,7 @@ Images will be resized to fit the frame (`800x480 px`).
 ### 2. Connect Pi & Server
 
 Create a new directory on your Pi and put `./frame/frame.py` and `./frame/default.jpg` into it.  
+Downdload this repo and put it's `RaspberryPi_JetsonNano/python/lib` directory and all its content next to frame.py and default.jpg.
 Set the environment variable `SERVER_URL` to the URL of the server (e.g. `http://localhost:80`), then run `python3 frame.py`.
 
 Now your Pi should fetch the images from the server and display them on the e-ink display.
