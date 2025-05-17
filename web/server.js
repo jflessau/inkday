@@ -160,7 +160,8 @@ app.get("/today-image", (req, res) => {
   const imgPath = path.join(DATA_DIR, today + ".jpg");
   fs.access(imgPath, fs.constants.F_OK, (err) => {
     if (err) {
-      return res.status(404).send("No image for today found");
+      res.status(404).end();
+      return;
     }
     res.sendFile(imgPath);
   });
