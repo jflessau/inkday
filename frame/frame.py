@@ -2,19 +2,16 @@ import sys
 import os
 import requests
 from io import BytesIO
+import logging
+import time
+from PIL import Image
 
 libdir = os.path.join(os.path.dirname(__file__), 'lib')
 if os.path.exists(libdir):
     sys.path.append(libdir)
-
-import logging
 from waveshare_epd import epd7in5_V2
-import time
-from PIL import Image,ImageDraw,ImageFont
-import traceback
-import os
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 def full_clear(epd):
     logging.info("clearing screen")
@@ -27,38 +24,48 @@ def get_img(server_url):
     response = requests.get(image_url)
     if response.status_code == 200:
         image = Image.open(BytesIO(response.content))
-        logging.info("Downloaded image size = %s", image.size)
+        logging.info("downloaded image size = %s", image.size)
         return image
     else:
-        logging.warning("Image for today not found on server, using default.jpg")
+        logging.warning("image for today not found on server, using default.jpg")
         image = Image.open('default.jpg')
         return image
 
-try:
+def main():
     server_url = os.getenv("SERVER_URL")
     if not server_url:
-        logging.error("Environment variable 'server_url' not set")
-        raise RuntimeError("Environment variable 'server_url' not set")
-    logging.info(f"starting with server_url: {server_url}")
+        logging.error("environment variable 'server_url' not set")
+        raise RuntimeError("environment variable 'server_url' not set")
+    logging.info("starting with server_url: %s", server_url)
 
     # init screen
     logging.info("init screen")
     epd = epd7in5_V2.EPD()
     epd.init()
-    full_clear(epd)
 
-    # display image
-    image = get_img(server_url)
-    epd.display(epd.getbuffer(image))
+    try:
+        while True:
+            full_clear(epd)
 
-    # enter sleep
-    logging.info("sleep...")
-    epd.sleep()
+            # display image
+            image = get_img(server_url)
+            epd.display(epd.getbuffer(image))
 
-except IOError as e:
-    logging.info(e)
+            # send screen to sleep
+            logging.info("send screen to sleep")
+            epd.sleep()
 
-except KeyboardInterrupt:
-    logging.info("ctrl + c:")
-    epd7in5_V2.epdconfig.module_exit(cleanup=True)
-    exit()
+            # sleep for 1 hour
+            logging.info("sleeping for 1 hour")
+            time.sleep(3600)
+
+    except IOError as e:
+        logging.info(e)
+
+    except KeyboardInterrupt:
+        logging.info("ctrl + c:")
+        epd7in5_V2.epdconfig.module_exit(cleanup=True)
+        exit()
+
+if __name__ == "__main__":
+    main()
