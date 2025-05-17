@@ -9,7 +9,7 @@ Upload images via the website's calendar interface. Choose one image for each da
 - 7.5" WaveShare e-ink display
 - Raspberry Pi 3B+ with power supply and WiFi connection
 - 3D printer (you can also use an online service to print the frame)
-- A server for the website (e.g. Pi itself)
+- A server for the website
 
 ## 🖐️ Usage
 
