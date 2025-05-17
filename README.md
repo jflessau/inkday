@@ -1,8 +1,12 @@
 # 🖌️ inkday
 
+<img src="/img/front.jpg" width="600" />
+
 A 3D printable frame for a 7.5" e-ink display and a website to control its content.
 
 Upload images via the website's calendar interface. Choose one image for each day.
+
+👉 __[Website Demo](https://inkday.jflessau.com)__
 
 ## 📦 Hardware Requirements
 
@@ -39,4 +43,13 @@ Print `./frame/inkday-frame.stl` (just one piece, supports are optional)
 
 ### 4. Assembling the Frame
 
-TODO
+1. Slide the screen into the frame with its cable pointing down.
+2. Connect the screen's cable to the driver
+3. Connect the driver to the Pi. 
+4. Attach the Pi with 4 screws. 
+5. Connect the Pi to a power source.
+
+<details>
+<summary><b>The result should look like this (click to expand)</b></summary>
+<img src="/img/back.jpg" max-width="800px"/>
+</details>
