@@ -1,9 +1,12 @@
-web/target
 
+# web
+web/node_modules
+web/data/*
+!web/data/.gitkeep
+
+# macOS
 .DS_Store
 /.idea
 
+# secrets
 .env
-
-web/data/*
-!web/data/.gitkeep
