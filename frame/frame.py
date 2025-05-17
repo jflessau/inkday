@@ -43,7 +43,7 @@ def main():
         while True:
             # check if it's midnight
             hour_of_the_day = time.localtime().tm_hour
-            if hour_of_the_day != 17:
+            if hour_of_the_day != 0:
                 logging.info(f"not midnight ({hour_of_the_day}), waiting for next hour")
                 time.sleep(3600)
                 continue
