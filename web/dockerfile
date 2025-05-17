@@ -1,9 +1,10 @@
-FROM oven/bun:latest
+FROM node:24-slim
 
 WORKDIR /app
 
+RUN npm i -g bun
 COPY . .
-RUN bun install
+RUN bun i --no-optional
 
 EXPOSE 1313
 
