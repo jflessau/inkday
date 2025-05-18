@@ -30,13 +30,12 @@ Images will be resized to fit the frame (`800x480 px`).
 
 ### 2. Connect Pi & Server
 
-Create a new directory on your Pi and put `./frame/frame.py` and `./frame/default.jpg` into it.  
-Download this repo and put its `RaspberryPi_JetsonNano/python/lib` directory and all its contents next to `frame.py` and `default.jpg`.
+1. Create a new directory on your Pi
+2. Put `./frame/frame.py` and `./frame/default.jpg` into it.
+3. Download [this repo](https://github.com/waveshare/e-Paper) and put its `RaspberryPi_JetsonNano/python/lib` directory and all its contents next to `frame.py` and `default.jpg`.
+4. Set the environment variable `SERVER_URL` to the URL of the server (e.g., `http://localhost:80`) and run `python3 frame.py`.
 
-Now set the environment variable `SERVER_URL` to the URL of the server (e.g., `http://localhost:80`) and run `python3 frame.py`.
-
-Your Pi should fetch images from the server and display them on the e-ink display.
-
+Your Pi should fetch images from the server and display them on the e-ink display.  
 If there is no image for the current day, the default image will be displayed.
 
 ### 3. Print the Frame
@@ -47,8 +46,8 @@ Print `./frame/inkday-frame.stl` (only one piece; supports are optional).
 
 1. Slide the screen into the frame with its cable pointing down.
 2. Connect the screen's cable to the driver.
-3. Connect the driver to the Pi.
-4. Attach the Pi with 4 screws.
+3. Attach the Pi to the frame with 4 screws.
+4. Connect the driver to the Pi.
 5. Connect the Pi to a power source.
 
 <details>
